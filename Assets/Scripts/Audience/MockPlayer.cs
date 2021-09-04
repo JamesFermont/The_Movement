@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class MockPlayer : MonoBehaviour {
-	private bool _isDancing;
+	public static bool _isDancing;
 
 	public static event Action<bool> DancingStateChanged;
 

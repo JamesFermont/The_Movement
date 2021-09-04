@@ -13,24 +13,22 @@ public class AudienceMoveSettings : ScriptableObject {
 		_configs = movePatterns;
 	}
 
-	public static AudienceMoveConfig GetRandomMoveConfig() => 
+	public AudienceMoveConfig GetRandomMoveConfig() => 
 		_configs[Random.Range(0, _configs.Count)];
 }
 
-[System.Serializable]
+[Serializable]
 public struct AudienceMoveConfig {
 	public float movementSpeed;
 	public float movementDuration;
 	public float idleTime;
 	public int direction;
-	
-	public bool canWalkOffVisibleRange;
 
-	public BehaviorOption CanChangeDirection;
-	public BehaviorOption CanIdle;
+	public BehaviorOption canChangeDirection;
+	public BehaviorOption canIdle;
 }
 
-[System.Serializable]
+[Serializable]
 public struct BehaviorOption {
 	[SerializeField] private bool enabled;
 	[SerializeField, Range(1,100)] private int likelihood;
