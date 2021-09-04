@@ -4,34 +4,41 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] Player player;
 
     [Space]
 
-    [SerializeField] private int speed;
+    private int speed;
+
+    private void Start()
+    {
+        speed = player.speed;
+    }
 
     void Update()
     {
-        //Move Character
-        transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0 , 0);
-
-        //Flip Character
-        Vector3 characterScale = transform.localScale;
-
-        if(Input.GetAxis("Horizontal") < 0)
+        if(player.dancing == false)
         {
-            characterScale.x = -1;
-        }
-        if(Input.GetAxis("Horizontal") > 0)
-        {
-            characterScale.x = 1;
-        }
+            //Move Character
+            transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
 
-        transform.localScale = characterScale;
+            //Flip Character
+            Vector3 characterScale = transform.localScale;
+
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                characterScale.x = -1;
+            }
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                characterScale.x = 1;
+            }
+
+            transform.localScale = characterScale;
+        }
 
         //control Player_Run Animation
-        playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
-        playerAnimator.speed = Mathf.Abs(Input.GetAxis("Horizontal"));
+        player.playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+        player.playerAnimator.speed = Mathf.Abs(Input.GetAxis("Horizontal"));
     }
 }
