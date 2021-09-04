@@ -897,7 +897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c9f04dc6b862e41b6e5c3a9e93ed3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winThreshold: 0.9
+  desaturateShader: {fileID: 2100000, guid: b584f0d4f5e699a4da271b770bc7d5a9, type: 2}
+  winThreshold: 0.701
   reactThresholds:
   - reaction: 0
     reactionthreshold: 100

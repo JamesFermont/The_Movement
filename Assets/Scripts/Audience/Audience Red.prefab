@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b584f0d4f5e699a4da271b770bc7d5a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,19 +97,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53250b9344a13ab4ab87ef6a1830ff78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audienceSettings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
   moveConfig:
     movementSpeed: 0
     movementDuration: 0
     idleTime: 0
     direction: 0
-    canWalkOffVisibleRange: 0
-    CanChangeDirection:
+    canChangeDirection:
       enabled: 0
       likelihood: 0
-    CanIdle:
+    canIdle:
       enabled: 0
       likelihood: 0
+  startingAlignment: 0
+  mood: 0
+  alignment: 0
+  isConvinced: 0
+  isPartying: 0
 --- !u!114 &2340623792641740241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,13 +130,18 @@ MonoBehaviour:
     movementDuration: 0
     idleTime: 0
     direction: 0
-    canWalkOffVisibleRange: 0
-    CanChangeDirection:
+    canChangeDirection:
       enabled: 0
       likelihood: 0
-    CanIdle:
+    canIdle:
       enabled: 0
       likelihood: 0
+  behaviorSettings:
+    reactionTime: 0
+    startingAlignment: 0
+    alignmentVelocity: 0
+    outedPercentToConvince: 0
+  member: {fileID: 0}
 --- !u!70 &8050581602224975809
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
