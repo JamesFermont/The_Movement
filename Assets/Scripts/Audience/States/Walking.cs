@@ -21,8 +21,8 @@ public class Walking : State {
 	}
 
 	public override void SetNextState() {
-		if (StateMachine.moveSettings.CanIdle.Trigger()) {
-			if (StateMachine.moveSettings.CanChangeDirection.Trigger())
+		if (StateMachine.moveSettings.canIdle.Trigger()) {
+			if (StateMachine.moveSettings.canChangeDirection.Trigger())
 				StateMachine.moveSettings.direction *= -1;
 			StateMachine.SetState(new Idle(StateMachine));
 		}

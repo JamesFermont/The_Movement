@@ -11,17 +11,20 @@ public class Audience : MonoBehaviour {
     [SerializeField] public bool isConvinced;
     [SerializeField] public bool isPartying;
 
-    private AudienceBehaviorSettings _behaviorSettings;
+    private AudienceBehaveConfig _behaviorSettings;
     private StateMachine _stateMachine;
 
-    public void SetSettings(AudienceBehaviorSettings settings) {
+    public void SetSettings(AudienceBehaveConfig settings) {
         _behaviorSettings = settings;
+    }
+
+    public void SetMoveConfig(AudienceMoveConfig config) {
+        moveConfig = config;
     }
     
     private void Awake() {
         _stateMachine = GetComponent<StateMachine>();
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = Random.Range(1, 6);
-        moveConfig = AudienceMoveSettings.GetRandomMoveConfig();
     }
 
     private void Start() {

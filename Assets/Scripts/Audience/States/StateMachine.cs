@@ -2,7 +2,7 @@
 
 public class StateMachine : MonoBehaviour {
 	public AudienceMoveConfig moveSettings;
-	public AudienceBehaviorSettings behaviorSettings;
+	public AudienceBehaveConfig behaviorSettings;
 	public Audience member;
 	public bool IsPartying => member.isPartying;
 

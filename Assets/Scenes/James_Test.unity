@@ -441,37 +441,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSettings: {fileID: 11400000, guid: 72c55418f80fe3845bca974119986cde, type: 2}
+  behaveSettings: {fileID: 11400000, guid: 4610b5494502e7a438ef1c8380d1284b, type: 2}
   config:
   - prefab: {fileID: 9046305338293940320, guid: bd6c35c4a708e504b9a12405829bd1ef, type: 3}
-    quantity: 10
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
+    quantity: 20
   - prefab: {fileID: 122063255761625139, guid: fb41b8b921773384abfe3f4e33241418, type: 3}
     quantity: 20
-    settings: {fileID: 11400000, guid: 4610b5494502e7a438ef1c8380d1284b, type: 2}
   - prefab: {fileID: 2915695419114760063, guid: 679c226d137770e47a6c1a4fe2f9e31b, type: 3}
-    quantity: 10
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
+    quantity: 20
   - prefab: {fileID: 3611748552163989881, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
     quantity: 20
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
   - prefab: {fileID: 5408953119610953778, guid: bc76dba72edbe764cb29368c867c1783, type: 3}
-    quantity: 10
-    settings: {fileID: 11400000, guid: 4610b5494502e7a438ef1c8380d1284b, type: 2}
-  - prefab: {fileID: 9062649270019136530, guid: ba8d34b9eb58fe94ab193f10d057abc3, type: 3}
-    quantity: 6
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
-  - prefab: {fileID: 2769647402005387638, guid: b31f43decf4a28f44b201540365d9bb6, type: 3}
-    quantity: 10
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
-  - prefab: {fileID: 2340623792641740240, guid: 62d271ba0f696d9458c1c886fe45280d, type: 3}
-    quantity: 15
-    settings: {fileID: 11400000, guid: 4610b5494502e7a438ef1c8380d1284b, type: 2}
-  - prefab: {fileID: 3855309753300847978, guid: 9740d9aeecdc0224f9c6370287daa4a8, type: 3}
     quantity: 20
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
-  - prefab: {fileID: 5031272883867405644, guid: bd3df91282aad794eb57470c17194747, type: 3}
-    quantity: 18
-    settings: {fileID: 11400000, guid: feeab9faa9ded894998f378088a60dae, type: 2}
+  - prefab: {fileID: 9062649270019136530, guid: ba8d34b9eb58fe94ab193f10d057abc3, type: 3}
+    quantity: 20
 --- !u!1 &1306492825
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +913,5 @@ MonoBehaviour:
   activatePoliceThresholdPer10Audience: 3
   listenerCount: 0
   partyingCount: 0
-  citizenCount: 0
   reactCount: 0
-  policeCount: 0
   currentReactions: 

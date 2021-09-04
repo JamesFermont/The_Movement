@@ -65,7 +65,7 @@ public class InfluenceHandler : MonoBehaviour {
                 PlayerWon?.Invoke();
         }
         else {
-            reactCount = Mathf.CeilToInt(listenerCount / 10f);
+            reactCount = Mathf.CeilToInt(listenerCount / 5f);
             currentReactions[(int) reaction]++;
             for (int i = 1; i <= 3; i++) {
                 if (currentReactions[i] > crowdReactThresholdPer10Audience * reactCount) {
@@ -74,7 +74,7 @@ public class InfluenceHandler : MonoBehaviour {
                 }
             }
 
-            if (currentReactions[4] > activatePoliceThresholdPer10Audience * reactCount) {
+            if (currentReactions[4] > activatePoliceThresholdPer10Audience * reactCount * reactCount) {
                 Debug.Log("Emit Event: Call the cops!");
             }
         }
