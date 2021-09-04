@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InfluenceHandler : MonoBehaviour {
+    public Material desaturateShader;
+    
     [SerializeField, Range(0.5f, 0.9f)] private float winThreshold;
     [SerializeField] private List<MoodThresholds> reactThresholds;
 
@@ -61,6 +63,7 @@ public class InfluenceHandler : MonoBehaviour {
             Debug.Log("Partying! Partying Percent now: " + GetPartyingPercent());
             partyingCount++;
             _partyingCount++;
+            desaturateShader.SetFloat("_WinSaturation", GetPartyingPercent() / winThreshold);
             if ((float)partyingCount/citizenCount >= winThreshold)
                 PlayerWon?.Invoke();
         }
