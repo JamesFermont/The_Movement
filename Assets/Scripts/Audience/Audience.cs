@@ -1,16 +1,23 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Audience : MonoBehaviour {
-    [Header("Configurations:")]
-    [SerializeField] private AudienceBehaviorSettings audienceSettings;
-
     [Header("Debug Information:")] [SerializeField]
     private AudienceMoveConfig moveConfig;
-    
+
+    [SerializeField] private int startingAlignment;
+    [SerializeField] private int mood;
+    [SerializeField] public int alignment;
+    [SerializeField] public bool isConvinced;
+    [SerializeField] public bool isPartying;
+
+    private AudienceBehaviorSettings _behaviorSettings;
     private StateMachine _stateMachine;
 
+    public void SetSettings(AudienceBehaviorSettings settings) {
+        _behaviorSettings = settings;
+    }
+    
     private void Awake() {
         _stateMachine = GetComponent<StateMachine>();
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = Random.Range(1, 6);
@@ -18,7 +25,12 @@ public class Audience : MonoBehaviour {
     }
 
     private void Start() {
+        mood = 0;
+        startingAlignment = alignment = _behaviorSettings.startingAlignment;
+        
         _stateMachine.moveSettings = moveConfig;
+        _stateMachine.behaviorSettings = _behaviorSettings;
+        _stateMachine.member = this;
         _stateMachine.Begin();
     }
 
@@ -34,8 +46,26 @@ public class Audience : MonoBehaviour {
         if (isDancing) {
             _stateMachine.OverrideState(new BeginListening(_stateMachine));
         }
-        else {
-            _stateMachine.OverrideState(new Walking(_stateMachine));
+    }
+
+    public void Convince() {
+        isConvinced = true;
+        mood = startingAlignment * -1;
+    }
+
+    public void UpdateAlignment(int amount) {
+        if (isConvinced) amount *= -1;
+        alignment += amount;
+    }
+
+    public void UpdateMood() {
+        mood += alignment;
+        if (mood >= InfluenceHandler.GetThresholds()[0].reactionthreshold) {
+            isPartying = true;
         }
+    }
+
+    public int GetMood() {
+        return mood;
     }
 }

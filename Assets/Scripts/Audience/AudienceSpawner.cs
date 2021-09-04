@@ -23,11 +23,13 @@ public class AudienceSpawner : MonoBehaviour {
     }
 
     private void SpawnAudience(SpawnConfig spawnConfig, Transform parent) {
+        InfluenceHandler.AddCitizens(spawnConfig.quantity);
         for (int i = 0; i < spawnConfig.quantity; i++) {
             Vector3 position = parent.position;
             position.x = Random.Range(-80f, 80f);
             position.y += Random.Range(-0.05f, 0.05f);
-            Instantiate(spawnConfig.prefab, position, Quaternion.identity, parent);
+            Audience newMember = Instantiate(spawnConfig.prefab, position, Quaternion.identity, parent);
+            newMember.SetSettings(spawnConfig.settings);
         }
     }
 }
@@ -36,4 +38,5 @@ public class AudienceSpawner : MonoBehaviour {
 public struct SpawnConfig {
     public Audience prefab;
     public int quantity;
+    public AudienceBehaviorSettings settings;
 }

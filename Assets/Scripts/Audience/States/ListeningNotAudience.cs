@@ -10,10 +10,16 @@ public class ListeningNotAudience : State {
 		c.a = 0.2f;
 		StateMachine.GetComponent<SpriteRenderer>().color = c;
 		
-		while (true)
+		while (MockPlayer._isDancing)
 			yield return null;
+		
+		c.a = 1f;
+		StateMachine.GetComponent<SpriteRenderer>().color = c;
+		
+		SetNextState();
 	}
 
 	public override void SetNextState() {
+		StateMachine.SetState(new Walking(StateMachine));
 	}
 }
