@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private int speed;
+    [SerializeField] private Animator playerAnimator;
 
-    private string moveDirection;
+    [Space]
+
+    [SerializeField] private int speed;
 
     void Update()
     {
@@ -27,5 +29,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.localScale = characterScale;
+
+        //control Player_Run Animation
+        playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+        playerAnimator.speed = Mathf.Abs(Input.GetAxis("Horizontal"));
     }
 }
