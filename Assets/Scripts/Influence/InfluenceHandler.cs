@@ -14,6 +14,8 @@ public class InfluenceHandler : MonoBehaviour {
     private static List<MoodThresholds> _thresholds;
     public static List<MoodThresholds> GetThresholds() => _thresholds;
 
+    public static event Action DispatchPolice;
+    public static event Action<Reaction> EmitReaction; 
     public static event Action PlayerWon;
     
     [SerializeField] private int listenerCount;
@@ -39,6 +41,7 @@ public class InfluenceHandler : MonoBehaviour {
 
     void Start() {
         _thresholds = reactThresholds;
+        desaturateShader.SetFloat("_WinSaturation", GetPartyingPercent() / winThreshold);
     }
 
     private void OnEnable() {
@@ -60,7 +63,7 @@ public class InfluenceHandler : MonoBehaviour {
 
     private void HandleReaction(Reaction reaction) {
         if (reaction == Reaction.Partying) {
-            Debug.Log("Partying! Partying Percent now: " + GetPartyingPercent());
+            EmitReaction?.Invoke(Reaction.Partying);
             partyingCount++;
             _partyingCount++;
             desaturateShader.SetFloat("_WinSaturation", GetPartyingPercent() / winThreshold);
@@ -68,17 +71,18 @@ public class InfluenceHandler : MonoBehaviour {
                 PlayerWon?.Invoke();
         }
         else {
-            reactCount = Mathf.CeilToInt(listenerCount / 5f);
+            reactCount = Mathf.CeilToInt(listenerCount / 10f);
             currentReactions[(int) reaction]++;
-            for (int i = 1; i <= 3; i++) {
+            for (int i = 1; i <= 4; i++) {
                 if (currentReactions[i] > crowdReactThresholdPer10Audience * reactCount) {
-                    Debug.Log("Emitting Reaction: " +  reaction);
+                    EmitReaction?.Invoke(_thresholds[i].reaction);
                     currentReactions[i] = 0;
                 }
             }
 
-            if (currentReactions[4] > activatePoliceThresholdPer10Audience * reactCount * reactCount) {
-                Debug.Log("Emit Event: Call the cops!");
+            if (currentReactions[4] > activatePoliceThresholdPer10Audience * reactCount * 1.5) {
+                DispatchPolice?.Invoke();
+                currentReactions[4] = 0;
             }
         }
     }

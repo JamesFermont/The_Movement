@@ -2,6 +2,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Audience : MonoBehaviour {
+    [SerializeField] private Material desaturateMaterial;
+    [SerializeField] private Material standardMaterial;
+
     [Header("Debug Information:")] [SerializeField]
     private AudienceMoveConfig moveConfig;
 
@@ -25,6 +28,7 @@ public class Audience : MonoBehaviour {
     private void Awake() {
         _stateMachine = GetComponent<StateMachine>();
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = Random.Range(1, 6);
+        gameObject.GetComponent<SpriteRenderer>().sharedMaterial = desaturateMaterial;
     }
 
     private void Start() {
@@ -69,6 +73,7 @@ public class Audience : MonoBehaviour {
         mood += alignment;
         if (mood >= InfluenceHandler.GetThresholds()[0].reactionthreshold) {
             isPartying = true;
+            GetComponent<SpriteRenderer>().sharedMaterial = standardMaterial;
         }
     }
 

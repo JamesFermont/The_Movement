@@ -29,7 +29,7 @@ public class AudienceSpawner : MonoBehaviour {
         var behaveConfig = behaveSettings.GetBehaveConfig();
         for (int i = 0; i < spawnConfig.quantity; i++) {
             Vector3 position = parent.position;
-            position.x = Random.Range(-80f, 80f);
+            position.x = Random.Range(-25f, 25f);
             position.y += Random.Range(-0.05f, 0.05f);
             Audience newMember = Instantiate(spawnConfig.prefab, position, Quaternion.identity, parent);
             newMember.SetMoveConfig(moveSettings.GetRandomMoveConfig());
