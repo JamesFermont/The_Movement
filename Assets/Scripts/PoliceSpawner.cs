@@ -21,7 +21,7 @@ public class PoliceSpawner : MonoBehaviour {
 		for (int i = 0; i < 3; i++) {
 			var police = Instantiate(_police, location, Quaternion.identity, transform);
 			var localScale = police.transform.localScale;
-			localScale.x = _player.position.x > 0 ? 1 : -1;
+			localScale.x = _player.position.x > 0 ? -1 : 1;
 			police.transform.localScale = localScale;
 			location.x += (_player.position.x > 0 ? 1 : -1) * 0.04f;
 		}
