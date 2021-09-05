@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            audioManager.StopAll();
             audioManager.Play("BGM");
             audioManager.Play("Pedestrian");
             audioManager.Pause("Dance");
@@ -111,6 +112,8 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("Hide", hidden);
 
         audioManager.Play("Manhole");
+
+        this.GetComponent<BoxCollider2D>().enabled = !hidden;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
