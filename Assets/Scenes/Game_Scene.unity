@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.76
       objectReference: {fileID: 0}
+    - target: {fileID: 5899675101618925081, guid: 0fdc21a557c6dda44bf2229f203e01fb, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5899675101618925082, guid: 0fdc21a557c6dda44bf2229f203e01fb, type: 3}
       propertyPath: m_Name
       value: Player
