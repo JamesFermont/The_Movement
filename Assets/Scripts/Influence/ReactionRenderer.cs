@@ -13,6 +13,8 @@ public class ReactionRenderer : MonoBehaviour {
     [SerializeField] private PlaySlot[] _slots;
     [SerializeField] private ReactionSprites[] _sprites;
 
+    private AudioManager audioManager;
+
     private List<PlaySlot> _availableSlots;
     private Queue<Reaction> _reactionsToPlay;
     
@@ -25,6 +27,8 @@ public class ReactionRenderer : MonoBehaviour {
             slot.animationEnded += AddSlotToList;
             _availableSlots.Add(slot);
         }
+
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void OnEnable() {
@@ -69,6 +73,9 @@ public class ReactionRenderer : MonoBehaviour {
     public void PlayReaction(Reaction reaction, PlaySlot slot) {
         slot.Coroutine = StartCoroutine(FadeIn(reaction, slot));
         _availableSlots.Remove(slot);
+
+        int index = UnityEngine.Random.Range(1, 3);
+        audioManager.Play(reaction + "_" + index.ToString());
     }
 
     private IEnumerator FadeIn(Reaction reaction, PlaySlot slot) {
