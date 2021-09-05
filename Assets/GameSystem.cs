@@ -9,8 +9,22 @@ public class GameSystem : MonoBehaviour {
     public GameObject gamePlay;
     public GameObject victory;
 
+    [SerializeField] private Player playerScript;
+    [SerializeField] private PlayerMovement playerMovementScript;
+    [SerializeField] private AudioManager audioManagerScript;
+
     public void ResetGame() {
         HasReset?.Invoke();
+
+        if (!playerScript)
+            playerScript = GameObject.FindWithTag("Player")?.GetComponent<Player>();
+        if (playerScript)
+            playerScript.enabled = true;
+        if (!playerMovementScript)
+            playerMovementScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        if (playerMovementScript)
+            playerMovementScript.enabled = true;
+
         gameOver.SetActive(false);
         victory.SetActive(false);
         gamePlay.SetActive(true);
@@ -26,7 +40,26 @@ public class GameSystem : MonoBehaviour {
 
     private void HandleGameOver() {
         Time.timeScale = 0.1f;
-        gameOver.SetActive(true);
+
+        if (!playerScript)
+            playerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
+        if (playerScript)
+            playerScript.enabled = false;
+        if (!playerMovementScript)
+            playerMovementScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        if (playerMovementScript)
+            playerMovementScript.enabled = false;
+
+        if (!audioManagerScript)
+            audioManagerScript = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        if (audioManagerScript)
+        {
+            audioManagerScript.StopAll();
+            audioManagerScript.Play("BGM");
+            audioManagerScript.Play("Pedestrian");
+        }
+
+            gameOver.SetActive(true);
         gamePlay.SetActive(false);
         HasGameOver?.Invoke();
     }
