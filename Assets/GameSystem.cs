@@ -59,7 +59,7 @@ public class GameSystem : MonoBehaviour {
             audioManagerScript.Play("Pedestrian");
         }
 
-            gameOver.SetActive(true);
+        gameOver.SetActive(true);
         gamePlay.SetActive(false);
         HasGameOver?.Invoke();
     }

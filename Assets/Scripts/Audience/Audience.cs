@@ -104,6 +104,7 @@ public class Audience : MonoBehaviour {
         if (_isComplaining)
             Complaining = false;
         mood = startingAlignment * -1;
+        alignment = startingAlignment * -1;
     }
 
     public void UpdateAlignment(int amount) {
