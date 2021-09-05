@@ -16,7 +16,7 @@ public class Police : MonoBehaviour {
 
     private void Update() {
         liveTime += Time.deltaTime;
-        transform.position += Vector3.right * Time.deltaTime * (liveTime > WalkTime ? 10.5f : 2.5f);
+        transform.position += new Vector3(transform.localScale.x, 0f, 0f) * Time.deltaTime * (liveTime > WalkTime ? 10.5f : 2.5f);
         policeAnimator.SetFloat("Speed", liveTime > WalkTime ? 10.5f : 2.5f);
     }
 
