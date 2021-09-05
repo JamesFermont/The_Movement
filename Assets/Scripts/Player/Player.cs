@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         lerpRatio = timer / jumpTime;
     }
 
-    void Dance()
+    public void Dance()
     {
         dancing = !dancing;
         DancingStateChanged?.Invoke(dancing);

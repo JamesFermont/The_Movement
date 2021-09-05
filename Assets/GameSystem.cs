@@ -44,7 +44,14 @@ public class GameSystem : MonoBehaviour {
         if (!playerScript)
             playerScript = GameObject.FindWithTag("Player").GetComponent<Player>();
         if (playerScript)
+        {
+            if (Player.dancing)
+            {
+                playerScript.playerAnimator.SetFloat("Speed", 0f);
+                playerScript.Dance();
+            }
             playerScript.enabled = false;
+        }
         if (!playerMovementScript)
             playerMovementScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
         if (playerMovementScript)
