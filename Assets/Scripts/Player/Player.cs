@@ -12,15 +12,22 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     public int speed;
     //[Header("Dance")]
+    private bool canDance;
     public static bool dancing = false;
     public static event Action<bool> DancingStateChanged;
     [Header("Hide")]
-    public bool canHide = false;
+    private bool canHide = false;
     public bool hidden = false;
+    [SerializeField] private AnimationCurve jumpCurve;
 
     public bool movementEnabled = true;
 
     private GameObject ghettoblaster;
+
+    float timer = 0f;
+    float jumpTime = 0.5f;
+    float lerpRatio;
+    Vector3 LerpOffset;
 
     void Start()
     {
@@ -29,23 +36,45 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Dance();
+            if(canDance == true)
+            {
+                Dance();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            Hide();
+            if (canHide == true)
+            {
+                Hide();
+
+                timer = 0f;
+                lerpRatio = 0f;
+                LerpOffset = Vector3.zero;
+                StartCoroutine(Jump());
+            }
         }
-        
-        if(hidden == true || dancing == true)
+
+        if (hidden == true)
         {
             movementEnabled = false;
+            canDance = false;
+        }
+        else if (dancing == true)
+        {
+            movementEnabled = false;
+            canDance = true;
         }
         else
         {
             movementEnabled = true;
+            canDance = true;
         }
+
+        timer += Time.deltaTime;
+
+        lerpRatio = timer / jumpTime;
     }
 
     void Dance()
@@ -57,7 +86,7 @@ public class Player : MonoBehaviour
 
         ghettoblaster.SetActive(dancing);
 
-        if(dancing == true)
+        if (dancing == true)
         {
             audioManager.Play("Dance");
             audioManager.Pause("BGM");
@@ -65,20 +94,18 @@ public class Player : MonoBehaviour
         else
         {
             audioManager.Play("BGM");
-            audioManager.Pause("Dance"); 
+            audioManager.Pause("Dance");
         }
     }
 
     void Hide()
     {
-        if(canHide == true)
-        {
-            hidden = !hidden;
+        hidden = !hidden;
 
-            manholeAnimator.SetBool("Open", hidden);
-            playerAnimator.SetBool("Hide", hidden);
+        manholeAnimator.SetBool("Open", hidden);
+        playerAnimator.SetBool("Hide", hidden);
 
-            audioManager.Play("Manhole");}
+        audioManager.Play("Manhole");
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -90,5 +117,15 @@ public class Player : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         canHide = false;
+    }
+
+    IEnumerator Jump()
+    {
+        while (lerpRatio <= 1)
+        {
+            LerpOffset = new Vector3(0f, jumpCurve.Evaluate(lerpRatio) * 0.125f, 0f);
+            transform.position = transform.position + LerpOffset;
+            yield return null;
+        }
     }
 }
