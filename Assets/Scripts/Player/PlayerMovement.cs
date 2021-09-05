@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
             }
 
             transform.localScale = characterScale;
-        }
 
-        //control Player_Run Animation
-        player.playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+            //control Player_Run Animation
+            player.playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+        }   
     }
 }
