@@ -17,7 +17,7 @@ public class React : State {
 
 		float convincedPct = InfluenceHandler.GetPartyingPercent();
 
-		if (StateMachine.behaviorSettings.alignmentVelocity < 0) {
+		if (StateMachine.behaviorSettings.alignmentVelocity < 0 && !StateMachine.member.isConvinced) {
 			if (convincedPct > StateMachine.behaviorSettings.outedPercentToConvince) {
 				StateMachine.member.Convince();
 			}

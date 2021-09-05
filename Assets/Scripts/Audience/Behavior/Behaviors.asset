@@ -13,27 +13,48 @@ MonoBehaviour:
   m_Name: Behaviors
   m_EditorClassIdentifier: 
   behavePatterns:
-  - reactionTime: 4
+  - reactionTime: 2
     startingAlignment: 20
     alignmentVelocity: 10
     outedPercentToConvince: 0
-  - reactionTime: 6
+    quantity: 5
+  - reactionTime: 4
     startingAlignment: -5
     alignmentVelocity: -10
-    outedPercentToConvince: 0.175
-  - reactionTime: 6
+    outedPercentToConvince: 0.1
+    quantity: 9
+  - reactionTime: 4
     startingAlignment: 0
     alignmentVelocity: 2
     outedPercentToConvince: 0
-  - reactionTime: 2
+    quantity: 10
+  - reactionTime: 1
     startingAlignment: 20
     alignmentVelocity: 1
     outedPercentToConvince: 0
-  - reactionTime: 2
+    quantity: 10
+  - reactionTime: 1
     startingAlignment: -20
     alignmentVelocity: -1
-    outedPercentToConvince: 0.299
-  - reactionTime: 10
+    outedPercentToConvince: 0.5
+    quantity: 25
+  - reactionTime: 6
     startingAlignment: 0
     alignmentVelocity: -4
-    outedPercentToConvince: 0.495
+    outedPercentToConvince: 0.6
+    quantity: 12
+  - reactionTime: 3
+    startingAlignment: 40
+    alignmentVelocity: 1
+    outedPercentToConvince: 0
+    quantity: 5
+  - reactionTime: 2
+    startingAlignment: -40
+    alignmentVelocity: -1
+    outedPercentToConvince: 0.3
+    quantity: 12
+  - reactionTime: 1
+    startingAlignment: -20
+    alignmentVelocity: -3
+    outedPercentToConvince: 0.4
+    quantity: 12

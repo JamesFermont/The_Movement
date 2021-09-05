@@ -25,9 +25,9 @@ public class AudienceSpawner : MonoBehaviour {
     }
 
     private void SpawnAudience(SpawnConfig spawnConfig, Transform parent) {
-        InfluenceHandler.AddCitizens(spawnConfig.quantity);
         var behaveConfig = behaveSettings.GetBehaveConfig();
-        for (int i = 0; i < spawnConfig.quantity; i++) {
+        InfluenceHandler.AddCitizens(behaveConfig.quantity);
+        for (int i = 0; i < behaveConfig.quantity; i++) {
             Vector3 position = parent.position;
             position.x = Random.Range(-25f, 25f);
             position.y += Random.Range(-0.05f, 0.05f);
@@ -41,5 +41,4 @@ public class AudienceSpawner : MonoBehaviour {
 [System.Serializable]
 public struct SpawnConfig {
     public Audience prefab;
-    public int quantity;
 }

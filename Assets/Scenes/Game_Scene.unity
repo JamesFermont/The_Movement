@@ -573,17 +573,14 @@ MonoBehaviour:
   behaveSettings: {fileID: 11400000, guid: 4610b5494502e7a438ef1c8380d1284b, type: 2}
   config:
   - prefab: {fileID: 2340623792641740240, guid: 62d271ba0f696d9458c1c886fe45280d, type: 3}
-    quantity: 20
   - prefab: {fileID: 5046536808529546577, guid: aac0cbf8d9ba3104a8d535e131e54427, type: 3}
-    quantity: 20
   - prefab: {fileID: 2522599643331898427, guid: 0646b5f5e76e0bc4e906cbda80c16a01, type: 3}
-    quantity: 20
   - prefab: {fileID: 2313929143138322202, guid: ba09c2f05e9c82e43888605dababec26, type: 3}
-    quantity: 20
   - prefab: {fileID: 5377118494622746484, guid: 136d9e71047764242b7a79f108b4884b, type: 3}
-    quantity: 20
   - prefab: {fileID: 3349131295172630416, guid: 405fed5e809b8ad448e484bb7e8d4062, type: 3}
-    quantity: 20
+  - prefab: {fileID: 4579395196419837931, guid: 2a76499e6b15ac24fb8ebc7d61f6a142, type: 3}
+  - prefab: {fileID: 2559435508782694349, guid: bd11609c1c80cbc4fa1d34004f8a5c85, type: 3}
+  - prefab: {fileID: 8182210587537068213, guid: c35cd5e65400c6643bd3afd63c950e77, type: 3}
 --- !u!1 &500734737
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +628,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -754,6 +752,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winbg: {fileID: 158760534}
   animDuration: 4
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570157fa6d0a66a4e9e2fa745c52267b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &730361506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -907,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desaturateShader: {fileID: 2100000, guid: b584f0d4f5e699a4da271b770bc7d5a9, type: 2}
-  winThreshold: 0.9
+  winThreshold: 0.7
   reactThresholds:
   - reaction: 0
     reactionthreshold: 100

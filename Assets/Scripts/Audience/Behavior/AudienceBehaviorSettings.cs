@@ -32,4 +32,5 @@ public struct AudienceBehaveConfig {
 	public int alignmentVelocity;
 	[Range(0f, 0.8f)]
 	public float outedPercentToConvince;
+	public int quantity;
 }
