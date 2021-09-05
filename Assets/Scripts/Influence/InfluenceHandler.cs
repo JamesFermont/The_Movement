@@ -5,7 +5,7 @@ using UnityEngine;
 public class InfluenceHandler : MonoBehaviour {
     public Material desaturateShader;
     
-    [SerializeField, Range(0.5f, 0.9f)] private float winThreshold;
+    [SerializeField, Range(0.3f, 0.9f)] private float winThreshold;
     [SerializeField] private List<MoodThresholds> reactThresholds;
 
     [SerializeField] private int crowdReactThresholdPer10Audience;

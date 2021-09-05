@@ -17,12 +17,12 @@ MonoBehaviour:
     startingAlignment: 20
     alignmentVelocity: 10
     outedPercentToConvince: 0
-    quantity: 5
+    quantity: 10
   - reactionTime: 4
     startingAlignment: -5
     alignmentVelocity: -10
-    outedPercentToConvince: 0.1
-    quantity: 9
+    outedPercentToConvince: 0.07
+    quantity: 6
   - reactionTime: 4
     startingAlignment: 0
     alignmentVelocity: 2
@@ -36,12 +36,12 @@ MonoBehaviour:
   - reactionTime: 1
     startingAlignment: -20
     alignmentVelocity: -1
-    outedPercentToConvince: 0.5
-    quantity: 25
+    outedPercentToConvince: 0.075
+    quantity: 20
   - reactionTime: 6
     startingAlignment: 0
     alignmentVelocity: -4
-    outedPercentToConvince: 0.6
+    outedPercentToConvince: 0.138
     quantity: 12
   - reactionTime: 3
     startingAlignment: 40
@@ -56,5 +56,5 @@ MonoBehaviour:
   - reactionTime: 1
     startingAlignment: -20
     alignmentVelocity: -3
-    outedPercentToConvince: 0.4
+    outedPercentToConvince: 0.246
     quantity: 12

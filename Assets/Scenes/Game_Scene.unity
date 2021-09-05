@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desaturateShader: {fileID: 2100000, guid: b584f0d4f5e699a4da271b770bc7d5a9, type: 2}
-  winThreshold: 0.7
+  winThreshold: 0.3
   reactThresholds:
   - reaction: 0
     reactionthreshold: 100
@@ -2084,7 +2084,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.6603774, g: 0.09033466, b: 0.34058973, a: 1}
+  m_Color: {r: 0.6792453, g: 0.11854753, b: 0.36602804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
