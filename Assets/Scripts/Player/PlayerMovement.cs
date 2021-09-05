@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(player.dancing == false)
+        if(player.movementEnabled == true)
         {
             //Move Character
             transform.position += new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
@@ -39,6 +39,5 @@ public class PlayerMovement : MonoBehaviour
 
         //control Player_Run Animation
         player.playerAnimator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
-        player.playerAnimator.speed = Mathf.Abs(Input.GetAxis("Horizontal"));
     }
 }
