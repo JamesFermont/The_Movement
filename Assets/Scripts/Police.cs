@@ -6,10 +6,18 @@ public class Police : MonoBehaviour {
     public float WalkTime = 2f;
 
     private float liveTime;
-    
+
+    private Animator policeAnimator;
+
+    private void Start()
+    {
+        policeAnimator = GetComponent<Animator>();
+    }
+
     private void Update() {
         liveTime += Time.deltaTime;
         transform.position += Vector3.right * Time.deltaTime * (liveTime > WalkTime ? 10.5f : 2.5f);
+        policeAnimator.SetFloat("Speed", liveTime > WalkTime ? 10.5f : 2.5f);
     }
 
     private void OnEnable() {
