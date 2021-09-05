@@ -29,14 +29,16 @@ public class CameraWinMotion : MonoBehaviour {
 
         float timeElapsed = 0f;
 
+        Vector3 startPos = transform.position;
+        Vector3 localPos = winbg.transform.localPosition;
         Vector3 targetPos = winbg.transform.position;
         targetPos.z = -10f;
 
         while (timeElapsed < animDuration) {
-            transform.position = Vector3.Lerp(transform.position, targetPos, timeElapsed / animDuration);
+            transform.position = Vector3.Lerp(startPos, targetPos, timeElapsed / animDuration);
             winbg.transform.localPosition =
-                Vector3.Lerp(winbg.transform.localPosition, Vector3.zero, timeElapsed / animDuration);
-            timeElapsed += Time.deltaTime;
+                Vector3.Lerp(localPos, Vector3.forward, timeElapsed / animDuration);
+            timeElapsed += Time.unscaledDeltaTime;
             yield return null;
         }
         

@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winbg: {fileID: 158760534}
-  animDuration: 4
+  animDuration: 6
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
