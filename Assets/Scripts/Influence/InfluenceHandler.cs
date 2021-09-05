@@ -61,6 +61,7 @@ public class InfluenceHandler : MonoBehaviour {
 
     private void OnReset() {
         _partyingCount = 0;
+        desaturateShader.SetFloat("_WinSaturation", 0);
     }
 
     private void SetComplainCount(bool isComplaining) {

@@ -64,7 +64,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Annoyed_1
     clip: {fileID: 8300000, guid: 1074d43a6f96d2d4fa52cbe86fad508c, type: 3}
-    volume: 0.25
+    volume: 0.125
     pitch: 1
     looping: 0
     source: {fileID: 0}
@@ -76,55 +76,55 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Complaining_1
     clip: {fileID: 8300000, guid: 0fc0015666e6dd649ba738d33c4f6dc9, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Complaining_2
     clip: {fileID: 8300000, guid: 04897b83f2fc9ea4989cb5e5f08399f7, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 0.975
     looping: 0
     source: {fileID: 0}
   - name: Enjoyment_1
     clip: {fileID: 8300000, guid: dfa6b74c1425ff04abde4dc0dbb6e599, type: 3}
-    volume: 0.3
+    volume: 0.15
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Enjoyment_2
     clip: {fileID: 8300000, guid: e6493bf2144016141ad33df38a6eba1d, type: 3}
-    volume: 0.3
+    volume: 0.15
     pitch: 1.1
     looping: 0
     source: {fileID: 0}
   - name: Partying_1
     clip: {fileID: 8300000, guid: 2ab72a14171d75e4394a813d82eac1ce, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Partying_2
     clip: {fileID: 8300000, guid: 95b051738404a024592ec09a1e2e42b5, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1.2
     looping: 0
     source: {fileID: 0}
   - name: Wondering_1
     clip: {fileID: 8300000, guid: 1eff1a81d8b37614ab3754864521e8fb, type: 3}
-    volume: 0.35
+    volume: 0.175
     pitch: 0.95
     looping: 0
     source: {fileID: 0}
   - name: Wondering_2
     clip: {fileID: 8300000, guid: d59ac808fcb7ada4da4899078e85e65f, type: 3}
-    volume: 0.35
+    volume: 0.175
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Mumble
     clip: {fileID: 8300000, guid: fc4ef159b386a654982cc2783a4869b7, type: 3}
-    volume: 0.25
+    volume: 0.125
     pitch: 1.2
     looping: 1
     source: {fileID: 0}

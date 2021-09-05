@@ -6,15 +6,11 @@ public class ListeningNotAudience : State {
 	}
 
 	public override IEnumerator Run() {
-		Color c = StateMachine.GetComponent<SpriteRenderer>().color;
-		c.a = 0.2f;
-		StateMachine.GetComponent<SpriteRenderer>().color = c;
+
 		
 		while (Player.dancing)
 			yield return null;
-		
-		c.a = 1f;
-		StateMachine.GetComponent<SpriteRenderer>().color = c;
+
 		
 		SetNextState();
 	}
