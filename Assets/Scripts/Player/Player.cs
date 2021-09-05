@@ -41,12 +41,10 @@ public class Player : MonoBehaviour
         if(hidden == true || dancing == true)
         {
             movementEnabled = false;
-            playerAnimator.speed = 1;
         }
         else
         {
             movementEnabled = true;
-            //playerAnimator.speed = Mathf.Abs(Input.GetAxis("Horizontal"));
         }
     }
 

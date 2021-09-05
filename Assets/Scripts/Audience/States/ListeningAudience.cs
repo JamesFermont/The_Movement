@@ -8,7 +8,7 @@ public class ListeningAudience : State {
 	public override IEnumerator Run() {
 		float timeElapsed = 0f;
 
-		while (timeElapsed < StateMachine.behaviorSettings.reactionTime && MockPlayer._isDancing) {
+		while (timeElapsed < StateMachine.behaviorSettings.reactionTime && Player.dancing) {
 			timeElapsed += Time.deltaTime;
 			yield return null;
 		}
@@ -17,7 +17,7 @@ public class ListeningAudience : State {
 	}
 
 	public override void SetNextState() {
-		if (MockPlayer._isDancing)
+		if (Player.dancing)
 			StateMachine.SetState(new React(StateMachine));
 		else {
 			StateMachine.SetState(new Walking(StateMachine));

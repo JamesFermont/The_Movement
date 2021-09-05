@@ -42,7 +42,7 @@ public class InfluenceHandler : MonoBehaviour {
     }
 
     private void OnEnable() {
-        MockPlayer.DancingStateChanged += HandleDancing;
+        Player.DancingStateChanged += HandleDancing;
         BeginListening.IsListening += HandleListener;
         React.EmitReaction += HandleReaction;
     }

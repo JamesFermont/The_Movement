@@ -35,14 +35,18 @@ public class Audience : MonoBehaviour {
         _stateMachine.behaviorSettings = _behaviorSettings;
         _stateMachine.member = this;
         _stateMachine.Begin();
+
+        Vector3 audienceScale = transform.localScale;
+        audienceScale.x = _stateMachine.moveSettings.direction * -0.75f;
+        transform.localScale = audienceScale;
     }
 
     private void OnEnable() {
-        MockPlayer.DancingStateChanged += OnPlayerDancing;
+        Player.DancingStateChanged += OnPlayerDancing;
     }
 
     private void OnDisable() {
-        MockPlayer.DancingStateChanged -= OnPlayerDancing;
+        Player.DancingStateChanged -= OnPlayerDancing;
     }
 
     private void OnPlayerDancing(bool isDancing) {

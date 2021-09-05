@@ -8,7 +8,7 @@ public class Partying : State {
 	public override IEnumerator Run() {
 		Vector3 originalPos = StateMachine.transform.position; 
 		
-		while (MockPlayer._isDancing) {
+		while (Player.dancing) {
 			StateMachine.transform.position = originalPos + Vector3.up * Mathf.PingPong(Time.time, 0.15f);
 			yield return null;
 		}
