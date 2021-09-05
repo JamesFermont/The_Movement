@@ -15,24 +15,26 @@ public class InfluenceHandler : MonoBehaviour {
     public static List<MoodThresholds> GetThresholds() => _thresholds;
 
     public static event Action DispatchPolice;
-    public static event Action<Reaction> EmitReaction; 
+    public static event Action<Reaction> EmitReaction;
+    public static event Action<float> EmitWinPercent;
+    public static event Action<float> EmitNotorietyPercent;
     public static event Action PlayerWon;
     
     [SerializeField] private int listenerCount;
-    [SerializeField] private int partyingCount;
-    [SerializeField] private int reactCount;
+    [SerializeField] private int complainCount;
+    [SerializeField] private int audienceSize;
 
     private static int _partyingCount;
-    private static int citizenCount;
+    private static int _citizenCount;
 
     [SerializeField] private int[] currentReactions;
 
     public static float GetPartyingPercent() {
-        return (float)_partyingCount / citizenCount;
+        return (float)_partyingCount / _citizenCount;
     }
 
     public static void AddCitizens(int amount) {
-        citizenCount += amount;
+        _citizenCount += amount;
     }
     
     private void Awake() {
@@ -48,6 +50,33 @@ public class InfluenceHandler : MonoBehaviour {
         Player.DancingStateChanged += HandleDancing;
         BeginListening.IsListening += HandleListener;
         React.EmitReaction += HandleReaction;
+        Audience.PartyStatusChanged += SetPartyCount;
+        Audience.ComplainingStatusChanged += SetComplainCount;
+    }
+
+    private void SetComplainCount(bool isComplaining) {
+        if (isComplaining)
+            complainCount++;
+        else {
+            complainCount--;
+        }
+
+        float complainPct = complainCount / (_citizenCount / 2f);
+        EmitNotorietyPercent?.Invoke(complainPct);
+    }
+
+    private void SetPartyCount(bool isPartying) {
+        if (isPartying)
+            _partyingCount++;
+        else {
+            _partyingCount--;
+        }
+        
+        float winPct = GetPartyingPercent() / winThreshold;
+        desaturateShader.SetFloat("_WinSaturation", winPct);
+        EmitWinPercent?.Invoke(winPct);
+        if (winPct >= 1f)
+            PlayerWon?.Invoke();
     }
 
     private void HandleListener() {
@@ -64,23 +93,18 @@ public class InfluenceHandler : MonoBehaviour {
     private void HandleReaction(Reaction reaction) {
         if (reaction == Reaction.Partying) {
             EmitReaction?.Invoke(Reaction.Partying);
-            partyingCount++;
-            _partyingCount++;
-            desaturateShader.SetFloat("_WinSaturation", GetPartyingPercent() / winThreshold);
-            if ((float)partyingCount/citizenCount >= winThreshold)
-                PlayerWon?.Invoke();
         }
         else {
-            reactCount = Mathf.CeilToInt(listenerCount / 10f);
+            audienceSize = Mathf.CeilToInt(listenerCount / 10f);
             currentReactions[(int) reaction]++;
             for (int i = 1; i <= 4; i++) {
-                if (currentReactions[i] > crowdReactThresholdPer10Audience * reactCount) {
+                if (currentReactions[i] > crowdReactThresholdPer10Audience * audienceSize) {
                     EmitReaction?.Invoke(_thresholds[i].reaction);
                     currentReactions[i] = 0;
                 }
             }
 
-            if (currentReactions[4] > activatePoliceThresholdPer10Audience * reactCount * 1.5) {
+            if (currentReactions[4] > activatePoliceThresholdPer10Audience * audienceSize * 1.5) {
                 DispatchPolice?.Invoke();
                 currentReactions[4] = 0;
             }
@@ -88,7 +112,11 @@ public class InfluenceHandler : MonoBehaviour {
     }
 
     private void OnDisable() {
+        Player.DancingStateChanged -= HandleDancing;
+        BeginListening.IsListening -= HandleListener;
         React.EmitReaction -= HandleReaction;
+        Audience.PartyStatusChanged -= SetPartyCount;
+        Audience.ComplainingStatusChanged -= SetComplainCount;
     }
 }
 

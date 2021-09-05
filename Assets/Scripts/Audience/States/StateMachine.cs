@@ -4,7 +4,7 @@ public class StateMachine : MonoBehaviour {
 	public AudienceMoveConfig moveSettings;
 	public AudienceBehaveConfig behaviorSettings;
 	public Audience member;
-	public bool IsPartying => member.isPartying;
+	public bool Partying => member.Partying;
 
 	public void Begin() {
 		SetState(new Walking(this));

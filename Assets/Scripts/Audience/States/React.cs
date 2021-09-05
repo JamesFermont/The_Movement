@@ -9,14 +9,14 @@ public class React : State {
 	public static event Action<Reaction> EmitReaction; 
 
 	public override IEnumerator Run() {
-		if (StateMachine.IsPartying) {
+		if (StateMachine.Partying) {
 			SetNextState();
 			yield break;
 		}
 
 		float convincedPct = InfluenceHandler.GetPartyingPercent();
 
-		if (StateMachine.behaviorSettings.startingAlignment < 0) {
+		if (StateMachine.behaviorSettings.alignmentVelocity < 0) {
 			if (convincedPct > StateMachine.behaviorSettings.outedPercentToConvince) {
 				StateMachine.member.Convince();
 			}
@@ -29,18 +29,25 @@ public class React : State {
 
 		List<MoodThresholds> thresholds = InfluenceHandler.GetThresholds();
 
+		bool hasReacted = false;
+		
 		for (int i = 0; i < thresholds.Count; i++) {
 			if (mood >= thresholds[i].reactionthreshold) {
 				EmitReaction?.Invoke(thresholds[i].reaction);
+				hasReacted = true;
 				break;
 			}
+		}
+
+		if (!hasReacted) {
+			EmitReaction?.Invoke(Reaction.Complaining);
 		}
 
 		SetNextState();
 	}
 
 	public override void SetNextState() {
-		if (StateMachine.IsPartying)
+		if (StateMachine.Partying)
 			StateMachine.SetState(new Partying(StateMachine));
 		else
 			StateMachine.SetState(new ListeningAudience(StateMachine));

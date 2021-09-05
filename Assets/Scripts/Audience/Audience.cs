@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,7 +13,27 @@ public class Audience : MonoBehaviour {
     [SerializeField] private int mood;
     [SerializeField] public int alignment;
     [SerializeField] public bool isConvinced;
-    [SerializeField] public bool isPartying;
+
+    private bool _isPartying;
+    private bool _isComplaining;
+
+    public static event Action<bool> PartyStatusChanged;
+    public static event Action<bool> ComplainingStatusChanged;
+
+    public bool Partying {
+        get => _isPartying;
+        set {
+            _isPartying = value;
+            PartyStatusChanged?.Invoke(_isPartying);
+        }
+    }
+
+    public bool Complaining {
+        set {
+            _isComplaining = value;
+            ComplainingStatusChanged?.Invoke(_isComplaining);
+        }
+    }
 
     private AudienceBehaveConfig _behaviorSettings;
     private StateMachine _stateMachine;
@@ -47,10 +68,28 @@ public class Audience : MonoBehaviour {
 
     private void OnEnable() {
         Player.DancingStateChanged += OnPlayerDancing;
+        GameSystem.HasReset += OnReset;
+    }
+
+    private void OnReset() {
+        mood = 0;
+        startingAlignment = alignment = _behaviorSettings.startingAlignment;
+        isConvinced = false;
+
+        if (_isPartying)
+            Partying = false;
+        if (_isComplaining)
+            Complaining = false;
+        
+        _stateMachine.moveSettings = moveConfig;
+        _stateMachine.behaviorSettings = _behaviorSettings;
+        _stateMachine.member = this;
+        _stateMachine.Begin();
     }
 
     private void OnDisable() {
         Player.DancingStateChanged -= OnPlayerDancing;
+        GameSystem.HasReset -= OnReset;
     }
 
     private void OnPlayerDancing(bool isDancing) {
@@ -61,6 +100,7 @@ public class Audience : MonoBehaviour {
 
     public void Convince() {
         isConvinced = true;
+        Complaining = false;
         mood = startingAlignment * -1;
     }
 
@@ -72,8 +112,12 @@ public class Audience : MonoBehaviour {
     public void UpdateMood() {
         mood += alignment;
         if (mood >= InfluenceHandler.GetThresholds()[0].reactionthreshold) {
-            isPartying = true;
+            Partying = true;
             GetComponent<SpriteRenderer>().sharedMaterial = standardMaterial;
+        }
+
+        if (mood >= InfluenceHandler.GetThresholds()[4].reactionthreshold) {
+            Complaining = true;
         }
     }
 
