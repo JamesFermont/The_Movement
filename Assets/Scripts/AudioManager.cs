@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("BGM");
+        Play("Pedestrian");
     }
 
     public void Play(string name)

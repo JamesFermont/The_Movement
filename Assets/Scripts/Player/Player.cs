@@ -60,11 +60,13 @@ public class Player : MonoBehaviour
         {
             movementEnabled = false;
             canDance = false;
+            canHide = true;
         }
         else if (dancing == true)
         {
             movementEnabled = false;
             canDance = true;
+            canHide = false;
         }
         else
         {
@@ -89,12 +91,16 @@ public class Player : MonoBehaviour
         if (dancing == true)
         {
             audioManager.Play("Dance");
+            audioManager.Play("Mumble");
             audioManager.Pause("BGM");
+            audioManager.Pause("Pedestrian");
         }
         else
         {
             audioManager.Play("BGM");
+            audioManager.Play("Pedestrian");
             audioManager.Pause("Dance");
+            audioManager.Pause("Mumble");
         }
     }
 
@@ -123,7 +129,7 @@ public class Player : MonoBehaviour
     {
         while (lerpRatio <= 1)
         {
-            LerpOffset = new Vector3(0f, jumpCurve.Evaluate(lerpRatio) * 0.125f, 0f);
+            LerpOffset = new Vector3(0f, jumpCurve.Evaluate(lerpRatio) * 0.1f, 0f);
             transform.position = transform.position + LerpOffset;
             yield return null;
         }
