@@ -918,12 +918,14 @@ MonoBehaviour:
   - reaction: 3
     reactionthreshold: -40
   - reaction: 4
-    reactionthreshold: -80
-  crowdReactThresholdPer10Audience: 5
-  activatePoliceThresholdPer10Audience: 1
+    reactionthreshold: -100
+  crowdReactThresholdPer10Audience: 4
+  activatePoliceThresholdPer10Audience: 3
   listenerCount: 0
-  complainCount: 0
-  audienceSize: 0
+  complainerCount: 0
+  audienceLevel: 0
+  reactionCount: 0
+  dispatchCount: 0
   currentReactions: 
 --- !u!114 &1061080974 stripped
 MonoBehaviour:

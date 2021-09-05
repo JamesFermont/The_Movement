@@ -42,6 +42,9 @@ public class ReactionRenderer : MonoBehaviour {
 
     private void OnDisable() {
         InfluenceHandler.EmitReaction -= HandleReaction;
+        foreach (PlaySlot slot in _slots) {
+            slot.renderer.sprite = null;
+        }
     }
 
     private void OnDestroy() {
@@ -74,7 +77,7 @@ public class ReactionRenderer : MonoBehaviour {
         slot.Coroutine = StartCoroutine(FadeIn(reaction, slot));
         _availableSlots.Remove(slot);
 
-        int index = UnityEngine.Random.Range(1, 3);
+        int index = Random.Range(1, 3);
         audioManager.Play(reaction + "_" + index.ToString());
     }
 

@@ -29,6 +29,7 @@ public class Audience : MonoBehaviour {
     }
 
     public bool Complaining {
+        get => _isComplaining;
         set {
             _isComplaining = value;
             ComplainingStatusChanged?.Invoke(_isComplaining);
@@ -100,7 +101,8 @@ public class Audience : MonoBehaviour {
 
     public void Convince() {
         isConvinced = true;
-        Complaining = false;
+        if (_isComplaining)
+            Complaining = false;
         mood = startingAlignment * -1;
     }
 
@@ -111,15 +113,16 @@ public class Audience : MonoBehaviour {
 
     public void UpdateMood() {
         mood += alignment;
+        if (Partying || Complaining) return;
+
         if (mood >= InfluenceHandler.GetThresholds()[0].reactionthreshold) {
             Partying = true;
             GetComponent<SpriteRenderer>().sharedMaterial = standardMaterial;
-        }
-
-        if (mood >= InfluenceHandler.GetThresholds()[4].reactionthreshold) {
-            Complaining = true;
+        } else if (mood <= InfluenceHandler.GetThresholds()[4].reactionthreshold) {
+           Complaining = true;
         }
     }
+
 
     public int GetMood() {
         return mood;
