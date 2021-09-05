@@ -9,9 +9,12 @@ public class Police : MonoBehaviour {
 
     private Animator policeAnimator;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
         policeAnimator = GetComponent<Animator>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update() {
@@ -26,6 +29,7 @@ public class Police : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player")) {
+            audioManager.Play("ScratchLose");
             PlayerCaught?.Invoke();
             Debug.Log("We gottem Sir!");
         }

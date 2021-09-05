@@ -64,26 +64,26 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Annoyed_1
     clip: {fileID: 8300000, guid: 1074d43a6f96d2d4fa52cbe86fad508c, type: 3}
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Annoyed_2
     clip: {fileID: 8300000, guid: 3376407735b9fdd4989e20e3d556a034, type: 3}
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Complaining_1
     clip: {fileID: 8300000, guid: 0fc0015666e6dd649ba738d33c4f6dc9, type: 3}
-    volume: 0.2
+    volume: 0.3
     pitch: 1
     looping: 0
     source: {fileID: 0}
   - name: Complaining_2
     clip: {fileID: 8300000, guid: 04897b83f2fc9ea4989cb5e5f08399f7, type: 3}
-    volume: 0.2
-    pitch: 1
+    volume: 0.3
+    pitch: 0.975
     looping: 0
     source: {fileID: 0}
   - name: Enjoyment_1
@@ -133,4 +133,10 @@ MonoBehaviour:
     volume: 0.01
     pitch: 1
     looping: 1
+    source: {fileID: 0}
+  - name: ScratchLose
+    clip: {fileID: 8300000, guid: 9b328a8e5f7628747902a8b3f843eb23, type: 3}
+    volume: 0.4
+    pitch: 1
+    looping: 0
     source: {fileID: 0}
