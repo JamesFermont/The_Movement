@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3611748552163989828, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
       propertyPath: m_Name
-      value: Test Audience Member Variant 1
+      value: Audience Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 3611748552163989830, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
       propertyPath: m_RootOrder
@@ -56,16 +56,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3611748552163989831, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2882ddefe09a65f4c87c0db4a0918ab5, type: 3}
+    - target: {fileID: 3611748552163989831, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
       propertyPath: m_Color.b
-      value: 0.36078432
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3611748552163989831, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
       propertyPath: m_Color.g
-      value: 0.82498014
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3611748552163989831, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
       propertyPath: m_Color.r
-      value: 0.85882354
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e609f0b54bf9242982e27533178f5f, type: 3}
