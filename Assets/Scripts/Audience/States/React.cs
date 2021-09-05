@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class React : State {
 	public React(StateMachine stateMachine) : base(stateMachine) {
@@ -26,23 +27,21 @@ public class React : State {
 		StateMachine.member.UpdateMood();
 
 		int mood = StateMachine.member.GetMood();
-
 		List<MoodThresholds> thresholds = InfluenceHandler.GetThresholds();
 
-		bool hasReacted = false;
-		
-		for (int i = 0; i < thresholds.Count; i++) {
-			if (mood >= thresholds[i].reactionthreshold) {
-				EmitReaction?.Invoke(thresholds[i].reaction);
-				hasReacted = true;
-				break;
-			}
+		if (mood >= thresholds[0].reactionthreshold) {
+			EmitReaction?.Invoke(Reaction.Partying);
+		} else if (mood <= thresholds[0].reactionthreshold && mood > thresholds[1].reactionthreshold) {
+			EmitReaction?.Invoke(Reaction.Enjoyment);
+		} else if (mood <= thresholds[1].reactionthreshold && mood > thresholds[3].reactionthreshold) {
+			EmitReaction?.Invoke(Reaction.Wondering);
+		} else if (mood <= thresholds[3].reactionthreshold && mood > thresholds[4].reactionthreshold) {
+			EmitReaction?.Invoke(Reaction.Annoyed);
 		}
-
-		if (!hasReacted) {
+		else {
 			EmitReaction?.Invoke(Reaction.Complaining);
 		}
-
+		
 		SetNextState();
 	}
 

@@ -21,8 +21,12 @@ public class InfluenceHandler : MonoBehaviour {
     public static event Action PlayerWon;
     
     [SerializeField] private int listenerCount;
-    [SerializeField] private int complainCount;
-    [SerializeField] private int audienceSize;
+    [SerializeField] private int complainerCount;
+    
+    [SerializeField] private int audienceLevel;
+
+    [SerializeField] private int reactionCount;
+    [SerializeField] private int dispatchCount;
 
     private static int _partyingCount;
     private static int _citizenCount;
@@ -56,12 +60,12 @@ public class InfluenceHandler : MonoBehaviour {
 
     private void SetComplainCount(bool isComplaining) {
         if (isComplaining)
-            complainCount++;
+            complainerCount++;
         else {
-            complainCount--;
+            complainerCount--;
         }
 
-        float complainPct = complainCount / (_citizenCount / 2f);
+        float complainPct = complainerCount / (_citizenCount / 2f);
         EmitNotorietyPercent?.Invoke(complainPct);
     }
 
@@ -81,6 +85,10 @@ public class InfluenceHandler : MonoBehaviour {
 
     private void HandleListener() {
         listenerCount++;
+        
+        audienceLevel = Mathf.CeilToInt(listenerCount / 10f);
+        reactionCount = audienceLevel * crowdReactThresholdPer10Audience;
+        dispatchCount = audienceLevel * audienceLevel * activatePoliceThresholdPer10Audience;
     }
 
     private void HandleDancing(bool isDancing) {
@@ -95,18 +103,19 @@ public class InfluenceHandler : MonoBehaviour {
             EmitReaction?.Invoke(Reaction.Partying);
         }
         else {
-            audienceSize = Mathf.CeilToInt(listenerCount / 10f);
             currentReactions[(int) reaction]++;
             for (int i = 1; i <= 4; i++) {
-                if (currentReactions[i] > crowdReactThresholdPer10Audience * audienceSize) {
+                if (currentReactions[i] == 0) continue;
+                if (currentReactions[i] % reactionCount == 0) {
                     EmitReaction?.Invoke(_thresholds[i].reaction);
-                    currentReactions[i] = 0;
                 }
             }
 
-            if (currentReactions[4] > activatePoliceThresholdPer10Audience * audienceSize * 1.5) {
-                DispatchPolice?.Invoke();
-                currentReactions[4] = 0;
+            if (currentReactions[4] != 0) {
+                if (currentReactions[4] % dispatchCount == 0) {
+                    DispatchPolice?.Invoke();
+                    currentReactions[4] = 0;
+                }
             }
         }
     }
