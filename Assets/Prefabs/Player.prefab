@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 5899675101551537680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5899675101618925063}
   m_RootOrder: 0
@@ -359,11 +359,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04a40f421cb1d24b9db84a273b81917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 3717610109179155349, guid: f616bd3269e081f459c6735d0185ff29, type: 3}
   playerAnimator: {fileID: 5899675101618925060}
   speed: 10
-  canHide: 0
   hidden: 0
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   movementEnabled: 1
 --- !u!114 &5899675101618925083
 MonoBehaviour:
