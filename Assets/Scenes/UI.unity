@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -510,6 +510,9 @@ MonoBehaviour:
   gameOver: {fileID: 683691164}
   gamePlay: {fileID: 1046927598}
   victory: {fileID: 375076663}
+  playerScript: {fileID: 0}
+  playerMovementScript: {fileID: 0}
+  audioManagerScript: {fileID: 0}
 --- !u!1 &223562154
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,10 +622,10 @@ RectTransform:
   m_Father: {fileID: 1233587841}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -237.5, y: -151.3}
-  m_SizeDelta: {x: 128.3, y: 30.59}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -237.5, y: 28.699997}
+  m_SizeDelta: {x: 128.29999, y: 30.589996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296402886
 MonoBehaviour:
@@ -737,6 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
+  playerMovementScript: {fileID: 0}
   gamePlay: {fileID: 1046927598}
 --- !u!1 &624135169
 GameObject:
@@ -972,7 +976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 114.72, y: 0.9}
+  m_AnchoredPosition: {x: 114.72, y: 0.9000015}
   m_SizeDelta: {x: 498, y: 23}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &864793099
@@ -1559,10 +1563,10 @@ RectTransform:
   m_Father: {fileID: 1233587841}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -237.5, y: 150.1}
-  m_SizeDelta: {x: 128.3, y: 30.59}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -237.5, y: -29.899994}
+  m_SizeDelta: {x: 128.29999, y: 30.589996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447955602
 MonoBehaviour:
@@ -1862,7 +1866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 114.72, y: 0.9}
+  m_AnchoredPosition: {x: 114.72, y: 0.9000015}
   m_SizeDelta: {x: 498, y: 23}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2132583100
