@@ -7,6 +7,7 @@ public class NotorietyBarFill : MonoBehaviour
 
     private void OnEnable() {
         InfluenceHandler.EmitNotorietyPercent += SetFill;
+        image.fillAmount = 0f;
     }
 
     private void SetFill(float fill) {

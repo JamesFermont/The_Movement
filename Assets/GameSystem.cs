@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GameSystem : MonoBehaviour {
     public static event Action HasReset;
-
+    public static event Action HasGameOver;
+    
     public GameObject gameOver;
     public GameObject gamePlay;
     public GameObject victory;
@@ -27,6 +28,7 @@ public class GameSystem : MonoBehaviour {
         Time.timeScale = 0.1f;
         gameOver.SetActive(true);
         gamePlay.SetActive(false);
+        HasGameOver?.Invoke();
     }
 
     private void HandleVictory() {

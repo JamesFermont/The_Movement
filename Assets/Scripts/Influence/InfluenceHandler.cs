@@ -56,6 +56,11 @@ public class InfluenceHandler : MonoBehaviour {
         React.EmitReaction += HandleReaction;
         Audience.PartyStatusChanged += SetPartyCount;
         Audience.ComplainingStatusChanged += SetComplainCount;
+        GameSystem.HasReset += OnReset;
+    }
+
+    private void OnReset() {
+        _partyingCount = 0;
     }
 
     private void SetComplainCount(bool isComplaining) {
@@ -126,6 +131,7 @@ public class InfluenceHandler : MonoBehaviour {
         React.EmitReaction -= HandleReaction;
         Audience.PartyStatusChanged -= SetPartyCount;
         Audience.ComplainingStatusChanged -= SetComplainCount;
+        GameSystem.HasReset -= OnReset;
     }
 }
 

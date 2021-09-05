@@ -6,6 +6,7 @@ public class WinBarFill : MonoBehaviour {
 
     private void OnEnable() {
         InfluenceHandler.EmitWinPercent += SetFill;
+        image.fillAmount = 0f;
     }
 
     private void SetFill(float fill) {
